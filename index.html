@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Js Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="content">
+        <form action="" class="form">
+            <h1>Browser Form</h1>
+            <div class="form-element-group"></div>
+            <div class="name form-element">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+                <span class="error name-error"></span>
+            </div>
+            <div class="email form-element">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <span class="error email-error"></span>
+            </div>
+            <div class="country form-element">
+                <label for="country">Country</label>
+                <select name="country" id="country">
+                    <option value="usa">USA</option>
+                    <option value="england">England</option>
+                    <option value="israel">Israel</option>
+                    <option value="south africa">South Africa</option>
+                </select>
+                <span class="error country-error"></span>
+            </div>
+            <div class="zip form-element">
+                <label for="zip">Zip Code</label>
+                <input type="tel" id="zip" name="zip">
+                <span class="error zip-error"></span>
+            </div>
+            <div class="password form-element">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <span class="error password-error"></span>
+            </div>
+            <div class="password-confirm form-element">
+                <label for="password-confirm">Confirm Password</label>
+                <input type="password" id="password-confirm" name="password-confirm">
+                <span class="error password-confim-error"></span>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
