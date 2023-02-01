@@ -36,6 +36,8 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
+    background-color: #F0E9D2;
+    overflow-x: hidden;
 }
 
 
@@ -45,7 +47,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F0E9D2;
 }
 
 
@@ -77,6 +78,7 @@ form h1 {
 }
 
 .form-element {
+    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -89,6 +91,8 @@ form h1 {
 }
 
 .form-element span {
+    width: 100%;
+    box-sizing: border-box;
     font-size: 0.8rem;
     font-weight: 500;
 }
@@ -99,7 +103,7 @@ form h1 {
 }
 
 .form-element input, select {
-    width: 300px;
+    width: 100%;
     padding: 0.4rem 0.4rem;
     background-color: #678983;
     font-size: 1.2rem;

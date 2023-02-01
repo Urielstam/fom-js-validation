@@ -10,12 +10,12 @@
 </head>
 <body>
     <div class="content">
-        <form action="" class="form" novalidate>
+        <form action="" class="form" novalidate autocomplete="off">
             <h1>Browser Form</h1>
             <div class="form-element-group">
                 <div class="name form-element">
                     <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required minlength="3" maxlength="20">
                 <span class="error name-error"></span>
             </div>
             <div class="email form-element">
