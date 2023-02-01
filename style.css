@@ -45,15 +45,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F0E9D2;
 }
 
 
 
 form {
     width: 50%;
-    border: 2px solid rgb(0, 0, 0);
+    /* border: 2px solid rgba(68, 68, 68, 0.39); */
     border-radius: 5px;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: #E6DDC4;
+    color: #181D31;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.form-element-group {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +73,7 @@ form {
 
 form h1 {
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .form-element {
@@ -71,7 +82,52 @@ form h1 {
     gap: 0.2rem;
 }
 
+
+.form-element label {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.form-element span {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.form-element span.show {
+    background-color: #F55050;
+    padding: 0.4rem;
+}
+
 .form-element input, select {
     width: 300px;
-    padding: 0.4rem 0.2rem;
+    padding: 0.4rem 0.4rem;
+    background-color: #678983;
+    font-size: 1.2rem;
+    border: 2px solid #181D31;
+}
+
+.form-element input:focus {
+    outline: none; 
+    border-color: transparent;
+    border-bottom: 2px solid #181D31;  
+}
+
+.form-element input.input-error {
+    /* background-color: #f550509a; */
+    border: 2px solid #F55050;
+}
+
+.form-element input.input-error:focus {
+    /* background-color: #f550509a; */
+    border-color: transparent;
+    border-bottom: 2px solid #F55050;
+}
+
+button.submit {
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }
