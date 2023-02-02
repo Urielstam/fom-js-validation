@@ -35,7 +35,7 @@
             </div>
             <div class="zip form-element">
                 <label for="zip">Zip Code</label>
-                <input type="tel" id="zip" name="zip" required>
+                <input type="tel" id="zip" name="zip" required pattern="^[0-9]+$" maxlength="20">
                 <span class="error zip-error"></span>
             </div>
             <div class="password form-element">

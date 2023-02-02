@@ -47,6 +47,9 @@ Array.from(formEls).forEach(item => {
             }
             else if(input.validity.typeMismatch) {
                 errorMsgs.checkEmail(input, error)
+            } else if(input.validity.patternMismatch) {
+                console.log("not pattern");
+                errorMsgs.checkZipCode(input, error);
             }
             else {
                 error.textContent = ""
@@ -54,7 +57,7 @@ Array.from(formEls).forEach(item => {
             }
         }
 
-        console.log(input.validity)
+        // console.log(input.validity)
     })
 
     input.addEventListener('blur', (e) => {
@@ -67,6 +70,9 @@ Array.from(formEls).forEach(item => {
         } 
         else if(input.validity.typeMismatch) {
             errorMsgs.checkEmail(input, error)
+        } else if(input.validity.patternMismatch) {
+            console.log("not pattern");
+            errorMsgs.checkZipCode(input, error);
         }
         else {
             error.textContent = ""
@@ -100,12 +106,16 @@ const errorMsgs = (() => {
         showErrorMsg(el, elError);
     }
 
-
+    const checkZipCode = (el, elError) => {
+        elError.textContent = "A zip code can contain only numbers";
+        showErrorMsg(el, elError);
+    }
     
     return {
         requiredErr: requiredErr,
         checkNameLength: checkNameLength,
-        checkEmail: checkEmail
+        checkEmail: checkEmail,
+        checkZipCode: checkZipCode
     }
 })();
 
