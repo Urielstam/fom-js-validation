@@ -82,17 +82,6 @@ Array.from(formEls).forEach(item => {
                     removeErrorMsg(input, error)
                 }
             }
-            else if (input.attributes.name.value === "password-confirm") {
-                let passwrd = formEls[4].children[1].value
-                console.log(passwrd)
-                if(!passwrd || (input.value !== passwrd)) {
-                    console.log(input.value + " + " + passwrd)
-                    errorMsgs.confirmPassword(input, error);
-                } else {
-                    error.textContent = "";
-                    removeErrorMsg(input, error);
-                }
-            }
             else if (input.validity.tooShort) {
                 errorMsgs.checkNameLength(input, error)
             }
@@ -151,6 +140,7 @@ Array.from(formEls).forEach(item => {
             }
         }
         else {
+            hasBeenBlurred = false;
             error.textContent = ""
             removeErrorMsg(input, error)
         }
