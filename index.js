@@ -1,13 +1,15 @@
 const form = document.querySelector('form');
+const sumbitBtn = document.querySelector('.submit');
 const submitBtn = document.querySelector('.submit');
 const nameInput = document.querySelector('#name');
 const nameError = document.querySelector('.name-error');
 const inputs = document.querySelectorAll('input');
 const formEls = document.querySelectorAll('.form-element');
 const errorSpans = document.querySelectorAll('span');
+const succeededMsg = document.querySelector('.succeeded');
 console.log(Array.from(formEls)[5].children[1].value)
 
-form.addEventListener('submit', (e) => {
+sumbitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     Array.from(formEls).forEach(item => {
         let children = item.children;
@@ -15,14 +17,14 @@ form.addEventListener('submit', (e) => {
         let spanChild = children[2];
         if(inputChild.nodeName !== "SELECT") {
             if(!inputChild.validity.valid) {
+                if (inputChild.validity.valueMissing) {
+                    errorMsgs.requiredErr(inputChild, spanChild);
+                }
                 if (inputChild.attributes.name.value === "password") {
                     if(inputChild.validity.patternMismatch) {
                         console.log(inputChild.value)
                         console.log(inputChild.validity.patternMismatch)
                         errorMsgs.checkValidPassword(inputChild, spanChild)
-                    } else {
-                        spanChild.textContent = ""
-                        removeErrorMsg(inputChild, spanChild)
                     }
                 }
                 else if (inputChild.attributes.name.value === "password-confirm") {
@@ -31,14 +33,8 @@ form.addEventListener('submit', (e) => {
                     if((inputChild.value !== passwrd)) {
                         console.log(inputChild.value + " + " + passwrd)
                         errorMsgs.confirmPassword(inputChild, spanChild);
-                    } else {
-                        spanChild.textContent = "";
-                        removeErrorMsg(inputChild, spanChild);
                     }
                 }
-                else if (inputChild.validity.valueMissing) {
-                    errorMsgs.requiredErr(inputChild, spanChild);
-                } 
                 else if (inputChild.validity.tooShort) {
                     errorMsgs.checkNameLength(inputChild, spanChild)
                 }
@@ -50,15 +46,18 @@ form.addEventListener('submit', (e) => {
                         errorMsgs.checkZipCode(inputChild, spanChild);
                     }
                 }
-                else {
-                    spanChild.textContent = ""
-                    removeErrorMsg(inputChild, spanChild)
-                }
+                // else {
+                // }
             } else {
-                form.reset()
+                spanChild.textContent = ""
+                removeErrorMsg(inputChild, spanChild)
             }
         }
     })
+    if(Array.from(formEls).every(item => item.children[1].validity.valid)) {
+        form.reset()
+        succeededMsg.style.display = "block";
+    }
 })
 
 let hasBeenBlurred = false;
@@ -69,10 +68,7 @@ Array.from(formEls).forEach(item => {
     let error = children[2];
     input.addEventListener('input', (e) => {
         if(hasBeenBlurred) {
-            if (input.validity.valueMissing) {
-                errorMsgs.requiredErr(input, error);
-            } 
-            else if (input.attributes.name.value === "password") {
+            if (input.attributes.name.value === "password") {
                 if(input.validity.patternMismatch) {
                     console.log(input.value)
                     console.log(input.validity.patternMismatch)
@@ -82,6 +78,9 @@ Array.from(formEls).forEach(item => {
                     removeErrorMsg(input, error)
                 }
             }
+            else if (input.validity.valueMissing) {
+                errorMsgs.requiredErr(input, error);
+            } 
             else if (input.validity.tooShort) {
                 errorMsgs.checkNameLength(input, error)
             }

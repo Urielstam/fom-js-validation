@@ -135,3 +135,9 @@ button.submit {
     color: white;
     cursor: pointer;
 }
+
+.succeeded {
+    display: none;
+    font-weight: 700;
+    color: #446A46;
+}
