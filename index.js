@@ -60,9 +60,9 @@ sumbitBtn.addEventListener('click', (e) => {
     }
 })
 
-let hasBeenBlurred = false;
 
 Array.from(formEls).forEach(item => {
+    let hasBeenBlurred = false;
     let children = item.children;
     let input = children[1];
     let error = children[2];
